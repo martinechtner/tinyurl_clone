@@ -1,0 +1,14 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
+
+development:
+  <<: *default
+  database: tinyurl_clone_dev
+
+test:
+  <<: *default
+  database: tinyurl_clone_test
+  username: postgres
+  password:
