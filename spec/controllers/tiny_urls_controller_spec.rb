@@ -56,4 +56,16 @@ RSpec.describe TinyUrlsController, type: :controller do
       end
     end
   end
+
+  describe 'GET #show' do
+    let(:tiny_url) { create(:tiny_url) }
+
+    subject { get :show, params: { use_route: "/show", mini_url: tiny_url.mini_url } }
+
+    it 'creates a url visitor record and redirects to the original url' do
+      expect { subject }.to change(UrlVisitor, :count).by 1
+
+      expect(response).to redirect_to tiny_url.formatted_original_url
+    end
+  end
 end

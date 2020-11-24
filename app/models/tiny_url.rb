@@ -5,6 +5,15 @@ class TinyUrl < ApplicationRecord
 
   before_validation :build_mini_url
 
+  def formatted_original_url
+    url = URI.parse(original_url)
+    if url.scheme.present?
+      original_url
+    else
+      'http://' + url.path
+    end
+  end
+
   private
 
     def build_mini_url

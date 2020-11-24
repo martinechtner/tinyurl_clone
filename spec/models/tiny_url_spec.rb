@@ -18,4 +18,12 @@ RSpec.describe TinyUrl, type: :model do
       end
     end
   end
+
+  describe 'formatted_original_url' do
+    let(:tiny_url) { create(:tiny_url, original_url: 'google.com') }
+
+    it 'returns a formatted url' do
+      expect(tiny_url.formatted_original_url).to eq 'http://google.com'
+    end
+  end
 end

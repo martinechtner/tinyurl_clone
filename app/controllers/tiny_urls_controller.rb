@@ -17,6 +17,13 @@ class TinyUrlsController < ApplicationController
     end
   end
 
+  def show
+    @tiny_url = TinyUrl.find_by(mini_url: params[:mini_url])
+    @tiny_url.url_visitors.create(tiny_url: @tiny_url, ip: request.remote_ip)
+
+    redirect_to "http://#{@tiny_url.original_url}"
+  end
+
   def info
     @tiny_url = TinyUrl.find_by(mini_url: params[:mini_url])
 
