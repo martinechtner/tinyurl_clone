@@ -1,3 +1,5 @@
+<%= render 'shared/flash_messages' %>
+
 <h2>Enter a URL to be tinified!</h2>
 
 <%= form_for TinyUrl.new, url: tiny_urls_path, method: :post do |f| %>

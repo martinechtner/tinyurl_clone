@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_23_210342) do
+ActiveRecord::Schema.define(version: 2020_11_24_003704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,4 +23,13 @@ ActiveRecord::Schema.define(version: 2020_11_23_210342) do
     t.index ["mini_url"], name: "index_tiny_urls_on_mini_url", unique: true
   end
 
+  create_table "url_visitors", force: :cascade do |t|
+    t.string "ip"
+    t.bigint "tiny_url_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tiny_url_id"], name: "index_url_visitors_on_tiny_url_id"
+  end
+
+  add_foreign_key "url_visitors", "tiny_urls"
 end
