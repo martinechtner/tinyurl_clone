@@ -46,7 +46,7 @@ RSpec.describe TinyUrlsController, type: :controller do
     end
 
     context 'with an invalid url' do
-      subject { get :info, params: { use_route: "/info", mini_url: '' } }
+      subject { get :info, params: { use_route: '/info', mini_url: '' } }
 
       it 'redirects to index with an error message' do
         subject
@@ -60,7 +60,7 @@ RSpec.describe TinyUrlsController, type: :controller do
   describe 'GET #show' do
     let(:tiny_url) { create(:tiny_url) }
 
-    subject { get :show, params: { use_route: "/show", mini_url: tiny_url.mini_url } }
+    subject { get :show, params: { use_route: '/show', mini_url: tiny_url.mini_url } }
 
     it 'creates a url visitor record and redirects to the original url' do
       expect { subject }.to change(UrlVisitor, :count).by 1
