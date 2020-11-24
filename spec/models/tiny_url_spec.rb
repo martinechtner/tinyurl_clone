@@ -5,7 +5,7 @@ RSpec.describe TinyUrl, type: :model do
   end
 
   describe 'before_validation' do
-    describe 'build_mini_url' do
+    context 'build_mini_url' do
       it 'creates a random 6 character mini_url' do
         tiny_url = create(:tiny_url, original_url: 'www.google.com')
 
