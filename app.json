@@ -1,0 +1,15 @@
+{
+  "addons": [
+    "heroku-postgresql:hobby-dev"
+  ],
+  "environments": {
+    "review": {
+      "addons": [
+        "heroku-postgresql:hobby-dev"
+      ]
+    }
+  },
+  "scripts": {
+    "postdeploy": "pg_dump -O --no-acl $STAGING_DATABASE_URL | psql -d $DATABASE_URL && bundle exec rake db:migrate"
+  }
+}
