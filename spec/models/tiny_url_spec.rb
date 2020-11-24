@@ -1,4 +1,8 @@
 RSpec.describe TinyUrl, type: :model do
+  describe 'associations' do
+    it { is_expected.to have_many(:url_visitors).dependent(:destroy) }
+  end
+
   describe 'validations' do
     it { validate_presence_of(:mini_url) }
     it { validate_presence_of(:original_url) }

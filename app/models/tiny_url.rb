@@ -1,4 +1,6 @@
 class TinyUrl < ApplicationRecord
+  has_many :url_visitors, dependent: :destroy
+
   validates_presence_of :mini_url, :original_url
 
   before_validation :build_mini_url
