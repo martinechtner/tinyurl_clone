@@ -25,7 +25,7 @@ class TinyUrlsController < ApplicationController
   end
 
   def info
-    @tiny_url = TinyUrl.find_by(mini_url: params[:mini_url])
+    @tiny_url = TinyUrl.includes(:url_visitors).find_by(mini_url: params[:mini_url])
 
     unless @tiny_url.present?
       redirect_to root_path, alert: 'URL not found.'

@@ -1,0 +1,9 @@
+<% if flash.count > 0 %>
+  <div class="flash-messages-container">
+    <% flash.each do |flash_type, msg| %>
+      <div class="alert alert-dismissible fade show" role="alert">
+        <p class="flash-body mb-1"><%= msg.html_safe %></p>
+      </div>
+    <% end %>
+  </div>
+<% end %>

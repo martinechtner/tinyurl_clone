@@ -1,6 +1,19 @@
+<%= render 'shared/flash_messages' %>
+
 <h2>Tiny URL Info:</h2>
 
 <ul>
   <li>Tiny url: <%= link_to show_url(@tiny_url.mini_url), show_url(@tiny_url.mini_url) %></li>
   <li>Original url: <%= link_to @tiny_url.formatted_original_url, @tiny_url.formatted_original_url %></li>
+</ul>
+
+<h2>URL Visitors</h2>
+<ul>
+  <% if @tiny_url.url_visitors.present? %>
+  <% @tiny_url.url_visitors.each do |visitor| %>
+    <li>IP Address: <%= visitor.ip %>on <%= visitor.created_at.strftime('%d %b %Y, %H:%M %Z') %></li>
+  <% end %>
+  <% else %>
+    <li>No visitors yet!</li>
+  <% end %>
 </ul>
